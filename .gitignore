@@ -17,3 +17,5 @@ Content/StarterContent
 
 *VC.db
 .vs
+*.VC.VC.opendb
+*.workspace
