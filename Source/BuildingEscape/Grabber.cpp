@@ -66,13 +66,12 @@ void UGrabber::Grab()
 	if (ActorHit)
 	{
 		auto ActorLocation = ComponentToGrab->GetOwner()->GetActorLocation();
-		auto AllowRotation = true;
 
 		PhysicsHandle->GrabComponent(
 			ComponentToGrab,
 			NAME_None, // no bones needed
 			ActorLocation,
-			AllowRotation
+			true // actor rotation
 		);
 	}
 }
