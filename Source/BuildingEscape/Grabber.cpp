@@ -67,6 +67,8 @@ void UGrabber::Grab()
 	{
 		auto ActorLocation = ComponentToGrab->GetOwner()->GetActorLocation();
 
+		if (!PhysicsHandle) { return; }
+
 		PhysicsHandle->GrabComponent(
 			ComponentToGrab,
 			NAME_None, // no bones needed
@@ -85,6 +87,9 @@ void UGrabber::Release()
 void UGrabber::TickComponent( float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction )
 {
 	Super::TickComponent( DeltaTime, TickType, ThisTickFunction );
+
+	/// Protects engine from crashing
+	if (!PhysicsHandle) { return;  }
 
 	// if the physics handle is attached
 	if (PhysicsHandle->GrabbedComponent)
@@ -146,7 +151,6 @@ FVector UGrabber::GetReachLineEnd()
 		OUT PlayerViewPointLocation,
 		OUT PlayerViewPointRotation
 	);
-
 
 	auto LineTraceEnd = PlayerViewPointLocation + PlayerViewPointRotation.Vector() * Reach;
 
