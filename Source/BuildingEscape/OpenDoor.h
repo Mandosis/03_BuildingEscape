@@ -35,9 +35,6 @@ private:
 	UPROPERTY(EditAnywhere)
 		float TriggerMass = 50.0f;
 
-	UPROPERTY(EditAnywhere)
-		float DoorCloseDelay = 1.0f;
-
 
 	// The owning door
 	AActor* Owner = nullptr;
